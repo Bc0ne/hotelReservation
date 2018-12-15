@@ -25,6 +25,7 @@
 
             builder.RegisterType<RoomRepository>().AsImplementedInterfaces().InstancePerLifetimeScope();
             builder.RegisterType<MealRepository>().AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterType<SeasonRepository>().AsImplementedInterfaces().InstancePerLifetimeScope();
         }
     }
 }
