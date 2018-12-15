@@ -13,12 +13,14 @@
 
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Meal> Meals { get; set; }
+        public DbSet<Season> Seasons { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .ApplyConfiguration(new RoomConfig())
-                .ApplyConfiguration(new MealConfig());
+                .ApplyConfiguration(new MealConfig())
+                .ApplyConfiguration(new SeasonConfig());
         }
     }
 }
