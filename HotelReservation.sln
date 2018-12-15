@@ -9,11 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{792CF2F1-9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{6E8524A7-F762-4C50-82B0-4CAF0F7A0411}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReservation.Core", "HotelReservation.Core\HotelReservation.Core.csproj", "{AF19A643-A9FD-495A-B0AD-DC21CA7C5847}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelReservation.Core", "HotelReservation.Core\HotelReservation.Core.csproj", "{AF19A643-A9FD-495A-B0AD-DC21CA7C5847}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReservation.Data", "HotelReservation.Data\HotelReservation.Data.csproj", "{401CA425-1855-45EF-83DF-F56DE8902C27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelReservation.Data", "HotelReservation.Data\HotelReservation.Data.csproj", "{401CA425-1855-45EF-83DF-F56DE8902C27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelReservation.Web.Admin", "HotelReservation.Web.Admin\HotelReservation.Web.Admin.csproj", "{0600582B-42DC-436B-90A4-E8ED60F76FA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelReservation.Web.Admin", "HotelReservation.Web.Admin\HotelReservation.Web.Admin.csproj", "{0600582B-42DC-436B-90A4-E8ED60F76FA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HoteReservation.Web.Models", "HoteReservation.Web.Models\HoteReservation.Web.Models.csproj", "{4AC57657-E789-4D06-8872-068482FDC150}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{0600582B-42DC-436B-90A4-E8ED60F76FA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0600582B-42DC-436B-90A4-E8ED60F76FA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0600582B-42DC-436B-90A4-E8ED60F76FA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AC57657-E789-4D06-8872-068482FDC150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AC57657-E789-4D06-8872-068482FDC150}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AC57657-E789-4D06-8872-068482FDC150}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AC57657-E789-4D06-8872-068482FDC150}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +47,7 @@ Global
 		{AF19A643-A9FD-495A-B0AD-DC21CA7C5847} = {286B355F-6252-4DE9-8685-6892847ECBF8}
 		{401CA425-1855-45EF-83DF-F56DE8902C27} = {792CF2F1-9E04-4E09-B5ED-BC10B4874C05}
 		{0600582B-42DC-436B-90A4-E8ED60F76FA5} = {6E8524A7-F762-4C50-82B0-4CAF0F7A0411}
+		{4AC57657-E789-4D06-8872-068482FDC150} = {6E8524A7-F762-4C50-82B0-4CAF0F7A0411}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7BDCB29E-3FCA-45B2-9BEE-69E650BCD618}
