@@ -5,15 +5,25 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HotelReservation.Web.Admin.Models;
+using HotelReservation.Core.Contracts;
 
 namespace HotelReservation.Web.Admin.Controllers
 {
     public class HomeController : Controller
     {
+        public readonly IRoomRepository _roomRepository;
+
+        public HomeController(IRoomRepository roomRepository)
+        {
+            _roomRepository = roomRepository;
+        }
+
         public IActionResult Index()
         {
+            ViewData["Title"] = "Reservation page";
             return View();
         }
+
 
         public IActionResult About()
         {
