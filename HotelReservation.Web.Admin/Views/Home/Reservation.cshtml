@@ -1,0 +1,80 @@
+﻿@model HoteReservation.Web.Models.Reservation.ReservationInputModel
+
+@{
+    ViewData["Title"] = "Reservation";
+}
+
+<h2>Make a Reservation</h2>
+
+
+<hr />
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <p class="alert alert-danger">@ViewBag.Message</p>
+    }
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="reservation" asp-controller="Home" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Adults" class="control-label"></label>
+                <input asp-for="Adults" class="form-control" />
+                <span asp-validation-for="Adults" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Children" class="control-label"></label>
+                <input asp-for="Children" class="form-control" />
+                <span asp-validation-for="Children" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoomId" class="control-label"></label>
+                <select asp-for="RoomId" asp-items="@(new SelectList(ViewBag.Rooms,"Id", "Type"))" class="form-control"></select>
+
+                <span asp-validation-for="RoomId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MealId" class="control-label"></label>
+                <select asp-for="MealId" asp-items="@(new SelectList(ViewBag.Meals,"Id", "Type"))" class="form-control"></select>
+                <span asp-validation-for="MealId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CheckIn" class="control-label"></label>
+                <input asp-for="CheckIn" class="form-control" />
+                <span asp-validation-for="CheckIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CheckOut" class="control-label"></label>
+                <input asp-for="CheckOut" class="form-control" />
+                <span asp-validation-for="CheckOut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Reserve" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+
+</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
