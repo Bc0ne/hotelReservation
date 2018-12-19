@@ -8,7 +8,7 @@ namespace HoteReservation.Web.Models.Season
     public class MealRateViewModel
     {
         public long MealId { get; set; }
-        [Display(Name = "MEal Type")]
+        [Display(Name = "Meal Type")]
         public string MealType { get; set; }
         [Display(Name = "Meal Rate")]
         //[DataType(DataType.Currency)]

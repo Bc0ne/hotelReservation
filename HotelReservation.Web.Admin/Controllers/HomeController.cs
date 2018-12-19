@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using HotelReservation.Web.Admin.Models;
-using HotelReservation.Core.Contracts;
-using HoteReservation.Web.Models.Season;
-using HoteReservation.Web.Models.Reservation;
-using HotelReservation.Core.Entities;
-using Microsoft.AspNetCore.Http;
-
-namespace HotelReservation.Web.Admin.Controllers
+﻿namespace HotelReservation.Web.Admin.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using Microsoft.AspNetCore.Mvc;
+    using HotelReservation.Web.Admin.Models;
+    using HotelReservation.Core.Contracts;
+    using HoteReservation.Web.Models.Season;
+    using HoteReservation.Web.Models.Reservation;
+    using HotelReservation.Core.Entities;
+    using Microsoft.AspNetCore.Http;
+
     public class HomeController : Controller
     {
         private readonly IRoomRateRepository _roomRateRepository;

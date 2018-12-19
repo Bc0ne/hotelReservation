@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using HotelReservation.Core.Contracts;
-using HotelReservation.Core.Entities;
-using HoteReservation.Web.Models.Season;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
-namespace HotelReservation.Web.Admin.Controllers
+﻿namespace HotelReservation.Web.Admin.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using HotelReservation.Core.Contracts;
+    using HotelReservation.Core.Entities;
+    using HoteReservation.Web.Models.Season;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+
     [Route("seasons")]
     public class SeasonsController : Controller
     {

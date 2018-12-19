@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-
-namespace HotelReservation.Web.Admin.Controllers
+﻿namespace HotelReservation.Web.Admin.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Diagnostics;
+    using Microsoft.AspNetCore.Mvc;
+
     [Route("errors")]
     public class ErrorsController : Controller
     {
