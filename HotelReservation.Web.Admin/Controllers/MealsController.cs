@@ -8,6 +8,7 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
 
+    [Route("meals")]
     public class MealsController : Controller
     {
         public readonly IMealRepository _mealRepository;
@@ -17,6 +18,8 @@
             _mealRepository = mealRepository;
         }
 
+        [HttpGet]
+        [Route("all")]
         public IActionResult Index()
         {
             var meals = _mealRepository.GetAllMeals();
@@ -58,6 +61,7 @@
             return View();
         }
 
+        [Route("{id}")]
         public IActionResult Edit(int id)
         {
             var meal = _mealRepository.GetMealById(id);
@@ -72,6 +76,7 @@
         }
 
         [HttpPost]
+        [Route("{id}")]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, MealViewModel model)
         {
@@ -89,27 +94,14 @@
             return View();
         }
 
-        // GET: Rooms/Delete/5
+        [Route("{id}/delete")]
         public ActionResult Delete(int id)
         {
-            return View();
-        }
+            var meal = _mealRepository.GetMealById(id);
 
-        // POST: Rooms/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
+            _mealRepository.DeleteMeal(meal);
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction(nameof(Index));
         }
     }
 }
