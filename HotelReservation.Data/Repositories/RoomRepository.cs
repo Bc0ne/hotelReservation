@@ -1,6 +1,7 @@
 ﻿using HotelReservation.Core.Contracts;
 using HotelReservation.Core.Entities;
 using HotelReservation.Data.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -33,6 +34,23 @@ namespace HotelReservation.Data.Repositories
 
         public void UpdateRoom()
         {
+            _context.SaveChanges();
+        }
+
+        public ICollection<Room> GetRoomsBySeasonDate(DateTime date)
+        {
+            var rooms = _context.Rooms
+                .Where(r => _context.RoomRates
+               .Where(x => x.Season.StartingDate <= date && x.Season.EndingDate >= date)
+               .Select(x => x.Room.Id)
+               .Contains(r.Id)).ToList();
+
+            return rooms;
+        }
+
+        public void DeleteRoom(Room room)
+        {
+            _context.Rooms.Remove(room);
             _context.SaveChanges();
         }
     }
