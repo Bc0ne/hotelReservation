@@ -5,16 +5,13 @@
 }
 
 <h2>Rooms</h2>
-
+<h4>@ViewBag.Message</h4>
 <h4>
-    <a asp-action="Create">Add new Room</a>
+    <a asp-controller="Rooms" asp-action="CreateRoom" class="btn btn-success">Add Room</a>
 </h4>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.RoomType)
             </th>
@@ -31,9 +28,6 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.RoomType)
             </td>
             <td>
@@ -43,9 +37,8 @@
                 @Html.DisplayFor(modelItem => item.NumberOfChildren)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.Id  }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
+                @Html.ActionLink("Edit", "EditRoom", new {  id=item.Id  }, new { @class = "btn btn-info" }) 
+                @Html.ActionLink("Delete", "DeleteRoom", "Rooms", new { id = item.Id }, new { @class = "btn btn-danger" })
         </tr>
 }
     </tbody>

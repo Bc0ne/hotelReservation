@@ -7,11 +7,17 @@
 <h2>Edit @Model.RoomType</h2>
 
 <hr />
+@{
+    if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <p class="alert alert-danger">@ViewBag.Message</p>
+    }
+}
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-controller="Rooms" asp-action="EditRoom" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
+            <input type="hidden" name="id" value="@ViewBag.RoomId" />
             <div class="form-group">
                 <label asp-for="RoomType" class="control-label"></label>
                 <input asp-for="RoomType" class="form-control" />
@@ -28,7 +34,7 @@
                 <span asp-validation-for="NumberOfChildren" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Update Room" class="btn btn-success" />
             </div>
         </form>
     </div>

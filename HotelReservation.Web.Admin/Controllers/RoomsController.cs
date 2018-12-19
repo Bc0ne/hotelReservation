@@ -7,6 +7,7 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
 
+    [Route("rooms/")]
     public class RoomsController : Controller
     {
         public readonly IRoomRepository _roomRepository;
@@ -16,6 +17,8 @@
             _roomRepository = roomRepository;
         }
 
+        [HttpGet]
+        [Route("all", Name ="allRooms")]
         public ActionResult Index()
         {
             var rooms = _roomRepository.GetRooms();
@@ -37,17 +40,28 @@
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult CreateRoom()
         {
-            return View();
+            if (!string.IsNullOrEmpty(HttpContext.Session.GetString("Message")))
+            {
+                ViewBag.Message = HttpContext.Session.GetString("Message");
+                HttpContext.Session.Remove("Message");
+            }
+
+            return View("Create");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(RoomInputModel model)
+        public IActionResult CreateRoom(RoomInputModel model)
         {
             if (ModelState.IsValid)
             {
+                if ((model.MaxNumOfAdults <= 0 && model.MaxNumOfChildren <= 0) || model.MaxNumOfAdults < 0 || model.MaxNumOfChildren < 0)
+                {
+                    HttpContext.Session.SetString("Message", "Please check Room capacity for Adults and Children.");
+                    return RedirectToAction(nameof(CreateRoom));
+                }
 
                 var room = Room.New(model.RoomType, model.MaxNumOfAdults, model.MaxNumOfChildren);
 
@@ -59,8 +73,16 @@
             return View();
         }
 
-        public ActionResult Edit(int id)
+        [HttpGet]
+        [Route("{id}")]
+        public ActionResult EditRoom(long id)
         {
+            if (!string.IsNullOrEmpty(HttpContext.Session.GetString("Message")))
+            {
+                ViewBag.Message = HttpContext.Session.GetString("Message");
+                HttpContext.Session.Remove("Message");
+            }
+
             var room = _roomRepository.GetRoomById(id);
 
             var roomOutputModel = new RoomViewModel()
@@ -70,17 +92,23 @@
                 NumberOfAdults = room.MaxNumOfAdults,
                 NumberOfChildren = room.MaxNumOfChildren
             };
-
-            return View(roomOutputModel);
+            ViewBag.RoomId = id;
+            return View("Edit", roomOutputModel);
         }
 
-        // POST: Rooms/Edit/5
         [HttpPost]
+        [Route("{id}")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, RoomViewModel model)
+        public ActionResult EditRoom(int id, RoomViewModel model)
         {
             if (ModelState.IsValid)
             {
+                if ((model.NumberOfAdults <= 0 && model.NumberOfChildren <= 0) || model.NumberOfAdults < 0 || model.NumberOfChildren < 0)
+                {
+                    HttpContext.Session.SetString("Message", "Please check Adults and Children entries.");
+                    return RedirectToAction(nameof(EditRoom), new { id = id});
+                }
+
                 var room = _roomRepository.GetRoomById(id);
 
                 room.Update(model.RoomType, model.NumberOfAdults, model.NumberOfChildren);
@@ -90,30 +118,17 @@
                 return RedirectToAction(nameof(Index));
             }
 
-            return View();
+            return View("Edit");
         }
 
-        // GET: Rooms/Delete/5
-        public ActionResult Delete(int id)
+        [HttpGet]
+        [Route("{id}/delete", Name ="deleteRoom")]
+        public ActionResult DeleteRoom(long id)
         {
-            return View();
-        }
-
-        // POST: Rooms/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var room = _roomRepository.GetRoomById(id);
+            _roomRepository.DeleteRoom(room);
+            ViewBag.Message = room.Type + "has been deleted.";
+            return RedirectToAction(nameof(Index));
         }
     }
 }
