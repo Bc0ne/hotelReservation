@@ -1,0 +1,47 @@
+﻿@model IEnumerable<HoteReservation.Web.Models.Season.RoomRateViewModel>
+
+@{
+    ViewData["Title"] = "RoomRates";
+}
+
+<h2 class="center-block">Season Details</h2>
+    <div>
+        <h4>Type : @ViewBag.Season.Type</h4>
+        <h4>Starting date :  @ViewBag.Season.StartingDate.ToString("MM/dd/yyyy")</h4>
+        <h4>Ending date:  @ViewBag.Season.EndingDate.ToString("MM/dd/yyyy")</h4>
+    </div>
+    <p>
+        @Html.ActionLink("Add Room Rate", "AddRoomRateToSeason", new { id = ViewBag.Season.Id}, new { @class = "btn btn-success" })
+
+    </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoomType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rate)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomType)
+            </td>
+            <td>
+                $ @Html.DisplayFor(modelItem => item.Rate)
+            </td>
+            
+            <td>
+                @Html.ActionLink("Edit", "EditRoomRateForSeason", new {  id = ViewBag.Season.Id, rateId = item.RateId  }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Delete", "DeleteRoomRate", new {  id= ViewBag.Season.Id , rateId = item.RateId}, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

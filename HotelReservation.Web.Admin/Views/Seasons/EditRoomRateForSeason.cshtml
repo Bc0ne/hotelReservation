@@ -1,0 +1,31 @@
+﻿@model HoteReservation.Web.Models.Season.RoomRateUpdateInputModel
+
+@{
+    ViewData["Title"] = "EditRoomRateForSeason";
+}
+
+<h3>Update Rate</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateRoomRateForSeason">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="id" value="@Model.SeasonId" />
+            <input type="hidden" name="rateId" value="@Model.RoomRateId" />
+            
+            <div class="form-group">
+                <label asp-for="Rate" class="control-label"></label>
+                <input asp-for="Rate" class="form-control" />
+                <span asp-validation-for="Rate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update Rate" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Room Rates", "GetAllRoomRatesBySeason", new { id = Model.SeasonId}, new { @class = "btn btn-default" })
+</div>
+
