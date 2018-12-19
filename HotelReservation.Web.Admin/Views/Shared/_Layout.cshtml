@@ -30,7 +30,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Rooms" asp-action="Index">Rooms</a></li>
+                    <li><a asp-area="" asp-controller="Rooms" asp-action="Index"> Rooms</a></li>
                     <li><a asp-area="" asp-controller="Meals" asp-action="Index">Meal Plans</a></li>
                     <li><a asp-area="" asp-controller="Seasons" asp-action="Index">Seasons</a></li>
                 </ul>
@@ -42,9 +42,8 @@
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2018 - HotelReservation.Web.Admin</p>
+        <footer class="navbar-inverse navbar-fixed-bottom">
+            <p class="text-center text-info" >&copy; 2018 - Hotel Reservation</p>
         </footer>
     </div>
 
