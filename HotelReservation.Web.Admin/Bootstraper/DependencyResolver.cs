@@ -26,6 +26,9 @@
             builder.RegisterType<RoomRepository>().AsImplementedInterfaces().InstancePerLifetimeScope();
             builder.RegisterType<MealRepository>().AsImplementedInterfaces().InstancePerLifetimeScope();
             builder.RegisterType<SeasonRepository>().AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterType<RoomRateRepository>().AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterType<MealRateRepository>().AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterType<ReservationRepository>().AsImplementedInterfaces().InstancePerLifetimeScope();
         }
     }
 }
