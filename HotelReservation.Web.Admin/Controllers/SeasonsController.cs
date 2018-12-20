@@ -106,7 +106,7 @@
             if (ModelState.IsValid)
             {
                 var season = _seasonRepository.GetSeasonById(id);
-                season.Type = model.Type;
+                season.UpdateSeasonType(model.Type);
                 _seasonRepository.UpdateSeason();
 
                 return RedirectToAction(nameof(Index));
